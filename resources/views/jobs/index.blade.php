@@ -3,9 +3,9 @@
         <section class="text-center">
             <h1 class="font-bold text-4xl pt-6">Let's Find Your Next Job</h1>
 
-            <form action="#" class="mt-6">
-                <input type="text" placeholder="Web Developer..." class="w-full max-w-xl rounded-xl bg-white/5 border-white/10 px-5 py-4">
-            </form>
+            <x-forms.form action="/search" class="mt-6">
+                <x-forms.input :label="false" placeholder="Web Developer..." name="q"/>
+            </x-forms.form>
         </section>
 
 
@@ -37,7 +37,6 @@
                 @foreach($jobs as $job)
                     <x-job-card-wide :$job/>
                 @endforeach
-
             </div>
         </section>
     </div>
