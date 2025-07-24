@@ -5,12 +5,16 @@
         <div class="flex justify-between">
             <div class="text-sm text-left">{{ $job->employer->name }}</div>
             <div class="flex space-x-2">
-                <button @click="showModal = true" type="button">
-                    <x-icons.delete/>
-                </button>
-                <a href="#">
-                    <x-icons.edit/>
-                </a>
+                @can('delete', $job)
+                    <button @click="showModal = true" type="button">
+                        <x-icons.delete/>
+                    </button>
+                @endcan
+                @can('update', $job)
+                        <a href="/jobs/{{ $job->id }}/edit">
+                            <x-icons.edit/>
+                        </a>
+                @endcan
             </div>
         </div>
 

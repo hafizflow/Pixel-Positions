@@ -32,12 +32,17 @@ class JobPolicy
         return false;
     }
 
+
+    public function edit(User $user, Job $job): bool
+    {
+        return $user->id === $job->employer->user_id;
+    }
     /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Job $job): bool
     {
-        return false;
+        return $user->id === $job->employer->user_id;
     }
 
     /**
@@ -45,7 +50,7 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        return false;
+        return $user->id === $job->employer->user_id;
     }
 
     /**
